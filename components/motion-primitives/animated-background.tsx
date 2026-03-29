@@ -51,11 +51,20 @@ export function AnimatedBackground({
 
     const interactionProps = enableHover
       ? {
-          onMouseEnter: () => handleSetActiveId(id),
-          onMouseLeave: () => handleSetActiveId(null),
+          onMouseEnter: (e: React.MouseEvent) => {
+            handleSetActiveId(id);
+            child.props.onMouseEnter?.(e);
+          },
+          onMouseLeave: (e: React.MouseEvent) => {
+            handleSetActiveId(null);
+            child.props.onMouseLeave?.(e);
+          },
         }
       : {
-          onClick: () => handleSetActiveId(id),
+          onClick: (e: React.MouseEvent) => {
+            handleSetActiveId(id);
+            child.props.onClick?.(e);
+          },
         };
 
     return cloneElement(

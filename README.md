@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📋 ClipBoardX - Site Officiel
 
-## Getting Started
+Ce dépôt contient le code source de la **page produit (landing page)** de **ClipBoardX**, une application web et de bureau ultra-moderne conçue pour gérer votre presse-papier avec une sécurité maximale et une simplicité déconcertante.
 
-First, run the development server:
+## ✨ Fonctionnalités des apps
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 🔒 **Confidentialité Totale** : Vos données ne quittent jamais votre appareil. Pas de serveurs distants, pas de tracking.
+- ⚡ **Historique Illimité** : Retrouvez tout ce que vous avez copié ces dernières heures, jours ou semaines.
+- 🔍 **Recherche Instantanée** : Trouvez n'importe quel extrait de texte en un clin d'œil.
+- 📱 **Multi-Plateforme** : Disponible sur Desktop (Windows, Linux, macOS) et prochainement sur Mobile.
+- 🔄 **Synchronisation Locale** : Synchronisez vos appareils via votre réseau local sans passer par Internet.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📄 Licence
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Ce projet est sous licence MIT.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Fait avec ❤️ par l'équipe ClipBoardX.*

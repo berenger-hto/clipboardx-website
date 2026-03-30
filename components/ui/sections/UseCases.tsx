@@ -45,7 +45,7 @@ export function UseCases() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-bold font-poppins"
+                        className="text-3xl md:text-5xl font-bold font-space px-4"
                     >
                         Très sous-estimé, mais puissant :
                     </motion.h2>
@@ -59,11 +59,11 @@ export function UseCases() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-24 py-16 border-b border-primary/5 last:border-0 group"
+                            className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-24 py-12 md:py-16 border-b border-primary/5 last:border-0 group"
                         >
                             {/* Left Column: Title */}
                             <div className="flex flex-col justify-start">
-                                <h3 className="text-2xl md:text-4xl font-bold font-poppins group-hover:text-primary transition-colors duration-300 leading-tight">
+                                <h3 className="text-2xl md:text-4xl font-bold font-space group-hover:text-primary transition-colors duration-300 leading-tight">
                                     {persona.title}
                                 </h3>
                             </div>

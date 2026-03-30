@@ -62,7 +62,7 @@ export function Download() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-bold font-poppins mb-6 bg-linear-to-b from-foreground to-foreground/70 bg-clip-text text-transparent"
+                        className="text-4xl md:text-5xl font-bold font-space mb-6 bg-linear-to-b from-foreground to-foreground/70 bg-clip-text text-transparent"
                     >
                         Télécharge ClipboardX
                     </motion.h2>

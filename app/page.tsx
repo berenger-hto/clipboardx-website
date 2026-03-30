@@ -4,7 +4,10 @@ import { WhyClipboardX } from "@/components/ui/sections/WhyClipboardX";
 import { Features } from "@/components/ui/sections/Features";
 import { HowItWorks } from "@/components/ui/sections/HowItWorks";
 import { UseCases } from "@/components/ui/sections/UseCases";
+import { FAQ } from "@/components/ui/sections/FAQ";
 import { Download } from "@/components/ui/sections/Download";
+import { Waitlist } from "@/components/ui/sections/Waitlist";
+import { Feedback } from "@/components/ui/sections/Feedback";
 import { Footer } from "@/components/ui/sections/Footer";
 
 export default function Home() {
@@ -16,7 +19,10 @@ export default function Home() {
       <Features />
       <HowItWorks />
       <UseCases />
+      <FAQ />
       <Download />
+      <Waitlist />
+      <Feedback />
       <Footer />
     </main>
   );

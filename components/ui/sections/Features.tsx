@@ -47,7 +47,7 @@ export function Features() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="text-4xl md:text-5xl font-bold font-poppins mb-4 bg-linear-to-b from-foreground to-foreground/70 bg-clip-text text-transparent"
+                        className="text-3xl sm:text-4xl md:text-5xl font-bold font-space mb-4 bg-linear-to-b from-foreground to-foreground/70 bg-clip-text text-transparent px-4"
                     >
                         Tout ce dont vous avez besoin
                     </motion.h2>

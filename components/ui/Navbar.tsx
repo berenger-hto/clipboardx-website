@@ -4,8 +4,15 @@ import { RefreshCw, Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import {
+    Drawer,
+    DrawerTrigger,
+    DrawerPopup,
+    DrawerClose
+} from "@/components/ui/drawer";
+import { cn } from "@/lib/utils";
 
 const TABS = [
     { label: "Accueil", href: "#home" },
@@ -17,18 +24,7 @@ const TABS = [
 
 export function Navbar() {
     const { theme, setTheme } = useTheme()
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-    useEffect(() => {
-        if (isMenuOpen) {
-            document.body.style.overflow = 'hidden'
-        } else {
-            document.body.style.overflow = 'unset'
-        }
-        return () => {
-            document.body.style.overflow = 'unset'
-        }
-    }, [isMenuOpen])
+    const [open, setOpen] = useState(false)
 
     const scrollToSection = (e: React.MouseEvent, id: string) => {
         e.preventDefault()
@@ -44,11 +40,11 @@ export function Navbar() {
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className="flex items-center justify-between h-20 px-6 md:px-20 backdrop-blur-sm fixed w-full top-0 left-0 z-100"
+                className="flex items-center justify-between h-20 px-4 md:px-20 backdrop-blur-sm fixed w-full top-0 left-0 z-100 border-b border-primary/5"
             >
                 <div className="flex items-center gap-2 cursor-pointer" onClick={(e) => scrollToSection(e, 'home')}>
                     <RefreshCw size={20} className="text-black dark:text-white" />
-                    <span className="text-xl font-bold">ClipBoardX</span>
+                    <span className="text-xl font-bold font-space tracking-tight">ClipBoardX</span>
                 </div>
 
                 {/* Desktop Navigation */}
@@ -74,97 +70,50 @@ export function Navbar() {
                         ))}
                     </AnimatedBackground>
                 </ul>
-
                 <div className="flex items-center gap-2">
                     <Button size="icon-lg" variant="ghost" className="hidden md:flex" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
                         <Moon className="hidden dark:block" />
                         <Sun className="block dark:hidden" />
                     </Button>
                     
-                    {/* Mobile Menu Toggle */}
-                    {!isMenuOpen && (
-                        <Button size="icon" variant="ghost" className="md:hidden" onClick={() => setIsMenuOpen(true)}>
+                    {/* Mobile Menu with Drawer */}
+                    <Drawer open={open} onOpenChange={setOpen}>
+                        <DrawerTrigger render={<Button size="icon" variant="ghost" className={cn("md:hidden transition-opacity duration-300", open ? "opacity-0 pointer-events-none" : "opacity-100")} />}>
                             <Menu size={24} />
-                        </Button>
-                    )}
-                </div>
-            </motion.div>
-
-            {/* Mobile Menu Overlay */}
-            <AnimatePresence>
-                {isMenuOpen && (
-                    <>
-                        {/* Backdrop overlay for the top portion */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={() => setIsMenuOpen(false)}
-                            className="fixed inset-0 z-90 bg-black/20 backdrop-blur-[2px] md:hidden"
-                        />
-                        
-                        {/* Bottom Sheet Menu */}
-                        <motion.div
-                            initial={{ y: "100%" }}
-                            animate={{ y: "0%" }}
-                            exit={{ y: "100%" }}
-                            transition={{ 
-                                type: "spring", 
-                                damping: 25, 
-                                stiffness: 200 
-                            }}
-                            className="fixed bottom-0 left-0 right-0 h-[50vh] z-100 bg-card/80 backdrop-blur-xl border-t border-primary/10 rounded-t-[40px] md:hidden flex flex-col items-center justify-center shadow-[0_-20px_50px_-12px_rgba(0,0,0,0.3)]"
-                        >
-                            {/* Decorative Handle */}
-                            <div className="absolute top-4 w-12 h-1.5 bg-primary/10 rounded-full" />
-
-                            <nav className="flex flex-col items-center gap-8">
-                                {TABS.map((tab, i) => (
-                                    <motion.div
-                                        key={tab.label}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: 10 }}
-                                        transition={{ 
-                                            delay: i * 0.05,
-                                            duration: 0.3
-                                        }}
-                                    >
+                        </DrawerTrigger>
+                        <DrawerPopup position="bottom" variant="inset" showBar className="bg-card/80 backdrop-blur-xl border-t border-primary/10">
+                            <div className="flex flex-col items-center justify-center min-h-[45vh] gap-8 p-10 relative">
+                                <nav className="flex flex-col items-center gap-6 mt-4">
+                                    {TABS.map((tab, i) => (
                                         <button 
+                                            key={tab.label}
                                             onClick={(e) => {
                                                 scrollToSection(e, tab.href)
-                                                setIsMenuOpen(false)
+                                                setOpen(false)
                                             }}
-                                            className="text-4xl font-semibold tracking-tight hover:text-primary transition-colors active:scale-95 duration-200 cursor-pointer"
+                                            className="text-3xl font-bold font-space tracking-tight hover:text-primary transition-colors active:scale-95 duration-200 cursor-pointer"
                                         >
                                             {tab.label}
                                         </button>
-                                    </motion.div>
-                                ))}
-                            </nav>
+                                    ))}
+                                </nav>
 
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 0.2 }}
-                                className="absolute bottom-10"
-                            >
-                                <Button 
-                                    variant="ghost" 
-                                    size="lg"
-                                    className="rounded-full px-8 text-lg font-medium"
-                                    onClick={() => {
-                                        setTheme(theme === "dark" ? "light" : "dark")
-                                    }}
-                                >
-                                    {theme === "dark" ? <Sun className="mr-3" size={24} /> : <Moon className="mr-3" size={24} />}
-                                    {theme === "dark" ? "Light" : "Dark"}
-                                </Button>
-                            </motion.div>
-                        </motion.div>
-                    </>
-                )}
-            </AnimatePresence>
+                                <div className="mt-4">
+                                    <Button 
+                                        variant="ghost" 
+                                        size="lg"
+                                        className="rounded-full px-8 text-lg font-medium"
+                                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                                    >
+                                        {theme === "dark" ? <Sun className="mr-3" size={24} /> : <Moon className="mr-3" size={24} />}
+                                        {theme === "dark" ? "Oeil de jour" : "Oeil de nuit"}
+                                    </Button>
+                                </div>
+                            </div>
+                        </DrawerPopup>
+                    </Drawer>
+                </div>
+            </motion.div>
         </>
     );
 }

@@ -4,33 +4,69 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { BorderTrail } from '@/components/motion-primitives/border-trail';
 import MagicRings from "@/components/MagicRings";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 export function Hero() {
+    const isDesktop = useMediaQuery("md");
+
     return <>
         <section className="relative flex flex-col items-center justify-center min-h-screen w-full overflow-hidden" id="home">
-            <MagicRings
-                color="#fff"
-                colorTwo="#000"
-                ringCount={6}
-                speed={1}
-                attenuation={10}
-                lineThickness={2}
-                baseRadius={0.35}
-                radiusStep={0.1}
-                scaleRate={0.1}
-                opacity={1}
-                blur={0}
-                noiseAmount={0.1}
-                rotation={0}
-                ringGap={1.5}
-                fadeIn={0.7}
-                fadeOut={0.5}
-                followMouse={false}
-                mouseInfluence={0.2}
-                hoverScale={1.2}
-                parallax={0.05}
-                clickBurst={false}
-            />
+            {isDesktop ? (
+                <MagicRings
+                    color="#fff"
+                    colorTwo="#000"
+                    ringCount={6}
+                    speed={1}
+                    attenuation={10}
+                    lineThickness={2}
+                    baseRadius={0.35}
+                    radiusStep={0.1}
+                    scaleRate={0.1}
+                    opacity={1}
+                    blur={0}
+                    noiseAmount={0.1}
+                    rotation={0}
+                    ringGap={1.5}
+                    fadeIn={0.7}
+                    fadeOut={0.5}
+                    followMouse={false}
+                    mouseInfluence={0.2}
+                    hoverScale={1.2}
+                    parallax={0.05}
+                    clickBurst={false}
+                />
+            ) : (
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <motion.div
+                        animate={{
+                            scale: [1, 1.3, 1],
+                            opacity: [0.15, 0.3, 0.15],
+                            x: [-20, 20, -20],
+                            y: [-20, 20, -20],
+                        }}
+                        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -top-20 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"
+                    />
+                    <motion.div
+                        animate={{
+                            scale: [1.3, 1, 1.3],
+                            opacity: [0.1, 0.2, 0.1],
+                            x: [20, -20, 20],
+                            y: [20, -20, 20],
+                        }}
+                        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                        className="absolute top-1/2 -right-20 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[140px]"
+                    />
+                    <motion.div
+                        animate={{
+                            scale: [1, 1.1, 1],
+                            opacity: [0.05, 0.15, 0.05],
+                        }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                        className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-full h-96 bg-primary/10 rounded-full blur-[100px]"
+                    />
+                </div>
+            )}
             <div className="relative z-10 flex flex-col items-center justify-center gap-6 pt-20">
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
@@ -47,17 +83,17 @@ export function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-7xl font-bold text-center font-poppins"
+                        className="text-4xl sm:text-6xl md:text-7xl font-bold text-center font-space leading-tight px-4"
                     >
-                        Votre presse papier local <br /> en un seul endroit
+                        Votre presse papier local <br className="hidden sm:block" /> en un seul endroit
                     </motion.h1>
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
-                        className="text-xl text-center text-primary/75"
+                        className="text-lg md:text-xl text-center text-primary/75 px-6 max-w-2xl"
                     >
-                        Gérez convenablement votre presse papier en local <br /> sans internet et en toute sécurité.
+                        Gérez convenablement votre presse papier en local <br className="hidden sm:block" /> sans internet et en toute sécurité.
                     </motion.p>
                 </div>
                 
@@ -65,10 +101,11 @@ export function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="flex items-center justify-center gap-2"
+                    className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-6 sm:px-0"
                 >
                     <Button 
                         size="xl" 
+                        className="w-full sm:w-auto"
                         onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
                     >
                         Télécharger l'app
@@ -76,6 +113,7 @@ export function Hero() {
                     <Button 
                         variant="outline" 
                         size="xl"
+                        className="w-full sm:w-auto"
                         onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
                     >
                         Voir les fonctionnalités

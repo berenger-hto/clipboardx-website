@@ -57,7 +57,7 @@ export function WhyClipboardX() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="text-3xl md:text-5xl font-bold font-poppins mb-6 max-w-4xl mx-auto leading-tight"
+                        className="text-3xl md:text-5xl font-bold font-space mb-6 max-w-4xl mx-auto leading-tight px-4"
                     >
                         Plus qu'un simple copier-coller
                     </motion.h2>
@@ -65,13 +65,13 @@ export function WhyClipboardX() {
 
                 <div className="relative p-6 md:p-12 rounded-[3rem] bg-card/10 border border-primary/5 backdrop-blur-sm overflow-hidden">
                     <div className="relative z-10">
-                        {/* Headers Grid */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
+                        {/* Headers Grid - Desktop/Tablet only */}
+                        <div className="hidden sm:grid grid-cols-2 gap-8 sm:gap-16 mb-12 sm:mb-16 text-center">
                             <div className="flex flex-col items-center justify-center gap-3">
                                 <span className="text-xl md:text-2xl font-bold opacity-40">Sans</span>
                                 <div className="flex items-center gap-2">
                                     <RefreshCw size={24} className="opacity-20" />
-                                    <span className="text-xl md:text-2xl font-bold font-poppins opacity-20">ClipboardX</span>
+                                    <span className="text-xl md:text-2xl font-bold font-space opacity-20">ClipboardX</span>
                                 </div>
                             </div>
                             
@@ -79,7 +79,7 @@ export function WhyClipboardX() {
                                 <span className="text-xl md:text-2xl font-bold">Avec</span>
                                 <div className="flex items-center gap-2">
                                     <RefreshCw size={24} className="text-primary" />
-                                    <span className="text-xl md:text-2xl font-bold font-poppins">ClipboardX</span>
+                                    <span className="text-xl md:text-2xl font-bold font-space">ClipboardX</span>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,16 @@ export function WhyClipboardX() {
                         {/* Content Grid */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                             {/* Left Side: SANS CONTENT */}
-                            <div className="flex justify-center">
+                            <div className="flex flex-col items-center justify-center">
+                                {/* Mobile Header - Sans */}
+                                <div className="sm:hidden flex flex-col items-center justify-center gap-2 mb-10 text-center">
+                                    <span className="text-xl font-bold opacity-40">Sans</span>
+                                    <div className="flex items-center gap-2">
+                                        <RefreshCw size={20} className="opacity-20" />
+                                        <span className="text-xl font-bold font-space opacity-20">ClipboardX</span>
+                                    </div>
+                                </div>
+
                                 <div className="space-y-6 w-full max-w-md">
                                     {PAIN_POINTS.map((point, i) => (
                                         <motion.div
@@ -106,13 +115,22 @@ export function WhyClipboardX() {
                             </div>
 
                             {/* Right Side: AVEC CONTENT */}
-                            <div className="relative min-h-[500px] flex items-center justify-center">
+                            <div className="relative min-h-[500px] flex flex-col items-center justify-center">
+                                {/* Mobile Header - Avec */}
+                                <div className="sm:hidden flex flex-col items-center justify-center gap-2 mb-12 mt-8 text-center relative z-10">
+                                    <span className="text-xl font-bold">Avec</span>
+                                    <div className="flex items-center gap-2">
+                                        <RefreshCw size={20} className="text-primary animate-spin-slow" />
+                                        <span className="text-xl font-bold font-space">ClipboardX</span>
+                                    </div>
+                                </div>
+
                                 {/* Decorative glow */}
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
                                 
                                 <div className="relative w-full h-full lg:max-w-md">
                                     {/* Floating Cards */}
-                                    <div className="relative h-full space-y-4 lg:space-y-0">
+                                    <div className="relative h-full flex flex-col sm:grid sm:grid-cols-2 lg:block gap-4 lg:space-y-0 pb-8 lg:pb-0">
                                         {BENEFITS.map((benefit, i) => (
                                             <motion.div
                                                 key={i}
@@ -128,15 +146,16 @@ export function WhyClipboardX() {
                                                     lg:absolute ${benefit.position} 
                                                     p-6 rounded-2xl bg-card/60 border border-primary/20 backdrop-blur-xl shadow-2xl
                                                     w-full lg:w-[280px] z-20 transition-all duration-300
+                                                    hover:scale-105
                                                 `}
-                                                style={{ rotate: `${benefit.rotation}deg` }}
+                                                style={{ rotate: benefit.rotation }}
                                             >
                                                 <div className="flex items-start gap-4">
                                                     <div className="p-2 rounded-lg bg-primary/10">
                                                         <CheckCircle2 className="w-5 h-5 text-primary" />
                                                     </div>
                                                     <div>
-                                                        <h4 className="font-bold mb-1">{benefit.title}</h4>
+                                                        <h4 className="font-bold font-space mb-1">{benefit.title}</h4>
                                                         <p className="text-xs text-primary/60 leading-relaxed">{benefit.text}</p>
                                                     </div>
                                                 </div>

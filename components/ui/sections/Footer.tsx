@@ -10,7 +10,7 @@ export function Footer() {
                 <div className="flex flex-col gap-6">
                     <div className="flex items-center gap-2">
                         <RefreshCw size={24} className="text-primary" />
-                        <span className="text-2xl font-bold font-poppins">ClipBoardX</span>
+                        <span className="text-2xl font-bold font-space">ClipBoardX</span>
                     </div>
                     <p className="text-primary/40 text-sm">
                         &copy; Copyright {new Date().getFullYear()} ClipBoardX
@@ -47,10 +47,10 @@ export function Footer() {
                         <li><a href="#" className="hover:text-primary transition-colors">X/Twitter</a></li>
                         <li><a href="#" className="hover:text-primary transition-colors">LinkedIn</a></li>
                     </ul>
-                    <div className="flex gap-4 mt-2 text-primary/40 text-xs font-bold uppercase tracking-widest">
+                    {/* <div className="flex gap-4 mt-2 text-primary/40 text-xs font-bold uppercase tracking-widest">
                         <button className="hover:text-primary transition-colors cursor-pointer">en</button>
                         <button className="text-primary cursor-default">fr</button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </footer>

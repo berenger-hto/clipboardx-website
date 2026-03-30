@@ -93,11 +93,11 @@ export function HowItWorks() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="text-4xl md:text-5xl font-bold font-poppins mb-4"
+                        className="text-3xl sm:text-4xl md:text-5xl font-bold font-space mb-4"
                     >
                         Comment ça marche ?
                     </motion.h2>
-                    <p className="text-primary/60 text-lg">Trois étapes simples pour reprendre le contrôle de vos données.</p>
+                    <p className="text-primary/60 text-lg px-6">Trois étapes simples pour reprendre le contrôle de vos données.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

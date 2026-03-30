@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Poppins } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Poppins, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -35,10 +41,10 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, poppins.variable, "font-sans", inter.variable)}
+      className={cn("h-full", "antialiased", spaceGrotesk.variable)}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body className={cn("min-h-full flex flex-col", spaceGrotesk.className)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

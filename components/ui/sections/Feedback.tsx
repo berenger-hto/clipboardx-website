@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { MessageSquareText } from "lucide-react";
-import { Send } from "lucide-react";
 import { Button } from "../button";
+import Link from "next/link";
 
 export function Feedback() {
     return (
@@ -30,7 +30,9 @@ export function Feedback() {
                         </p>
                     </div>
 
-                    <Button size="xl" variant="outline">Donne ton avis</Button>
+                    <Link href="/feedback">
+                        <Button size="xl" variant="outline">Donne ton avis</Button>
+                    </Link>
                 </motion.div>
             </div>
 

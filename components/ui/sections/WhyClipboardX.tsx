@@ -56,7 +56,7 @@ export function WhyClipboardX() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.3 }}
                         className="text-3xl md:text-5xl font-bold font-space mb-6 max-w-4xl mx-auto leading-tight px-4"
                     >
                         Plus qu'un simple copier-coller
@@ -104,7 +104,7 @@ export function WhyClipboardX() {
                                             initial={{ opacity: 0, x: -20 }}
                                             whileInView={{ opacity: 1, x: 0 }}
                                             viewport={{ once: true }}
-                                            transition={{ delay: i * 0.1 }}
+                                            transition={{ delay: i * 0.08 }}
                                             className="flex items-center gap-4"
                                         >
                                             <XCircle className="w-6 h-6 text-red-500/50 shrink-0" />
@@ -126,7 +126,7 @@ export function WhyClipboardX() {
                                 </div>
 
                                 {/* Decorative glow */}
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[70px] pointer-events-none" />
                                 
                                 <div className="relative w-full h-full lg:max-w-md">
                                     {/* Floating Cards */}
@@ -139,8 +139,8 @@ export function WhyClipboardX() {
                                                 viewport={{ once: true }}
                                                 transition={{ 
                                                     type: "spring",
-                                                    duration: 0.8,
-                                                    delay: i * 0.15 
+                                                    duration: 0.5,
+                                                    delay: i * 0.12 
                                                 }}
                                                 className={`
                                                     lg:absolute ${benefit.position} 

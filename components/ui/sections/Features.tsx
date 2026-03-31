@@ -46,7 +46,7 @@ export function Features() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.3 }}
                         className="text-3xl sm:text-4xl md:text-5xl font-bold font-space mb-4 bg-linear-to-b from-foreground to-foreground/70 bg-clip-text text-transparent px-4"
                     >
                         Tout ce dont vous avez besoin
@@ -55,7 +55,7 @@ export function Features() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
+                        transition={{ duration: 0.3, delay: 0.08 }}
                         className="text-lg text-primary/60 max-w-2xl mx-auto"
                     >
                         ClipboardX se concentre sur l'essentiel : la sécurité et la simplicité de votre presse-papier.
@@ -74,7 +74,7 @@ export function Features() {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                transition={{ duration: 0.3, delay: index * 0.08 }}
                                 className="group p-8 rounded-3xl border border-primary/10 bg-card/30 backdrop-blur-xl hover:border-primary/20 transition-all duration-300 flex flex-col items-start gap-4"
                             >
                                 <div className="p-3 rounded-2xl bg-primary/5 group-hover:bg-primary/10 transition-colors duration-300">
@@ -91,7 +91,7 @@ export function Features() {
             </div>
 
             {/* Subtle decorative background glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
         </section>
     );
 }

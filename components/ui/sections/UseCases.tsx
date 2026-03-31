@@ -58,7 +58,7 @@ export function UseCases() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            transition={{ duration: 0.4, delay: index * 0.08 }}
                             className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-24 py-12 md:py-16 border-b border-primary/5 last:border-0 group"
                         >
                             {/* Left Column: Title */}
@@ -89,7 +89,7 @@ export function UseCases() {
             </div>
 
             {/* Subtle background glow */}
-            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 blur-[80px] rounded-full pointer-events-none" />
         </section>
     );
 }

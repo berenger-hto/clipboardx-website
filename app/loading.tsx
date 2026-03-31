@@ -5,7 +5,7 @@ import { RefreshCw } from "lucide-react"
 
 export default function Loading() {
     return (
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-background">
+        <div className="fixed inset-0 z-1000 flex items-center justify-center bg-background">
             <div className="flex flex-col items-center gap-6">
                 <div className="relative">
                     {/* Spinning Icon */}
@@ -14,7 +14,7 @@ export default function Loading() {
                             rotate: 360,
                         }}
                         transition={{
-                            duration: 2,
+                            duration: 1.5,
                             repeat: Infinity,
                             ease: "linear"
                         }}
@@ -30,7 +30,7 @@ export default function Loading() {
                             opacity: [0.1, 0.3, 0.1],
                         }}
                         transition={{
-                            duration: 2,
+                            duration: 1.5,
                             repeat: Infinity,
                             ease: "easeInOut"
                         }}
@@ -54,7 +54,7 @@ export default function Loading() {
                                 x: [-48, 48]
                             }}
                             transition={{
-                                duration: 1.5,
+                                duration: 1,
                                 repeat: Infinity,
                                 ease: "easeInOut"
                             }}
@@ -65,7 +65,7 @@ export default function Loading() {
             </div>
 
             {/* Subtle background texture or glow can be added here if needed */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
         </div>
     )
 }

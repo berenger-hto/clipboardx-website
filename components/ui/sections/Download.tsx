@@ -51,7 +51,7 @@ export function Download() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.3 }}
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
                     >
                         <DownloadIcon className="w-4 h-4" />
@@ -61,7 +61,7 @@ export function Download() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
+                        transition={{ duration: 0.3, delay: 0.08 }}
                         className="text-4xl md:text-5xl font-bold font-space mb-6 bg-linear-to-b from-foreground to-foreground/70 bg-clip-text text-transparent"
                     >
                         Télécharge ClipboardX
@@ -70,7 +70,7 @@ export function Download() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
+                        transition={{ duration: 0.3, delay: 0.15 }}
                         className="text-lg text-primary/60 max-w-2xl mx-auto"
                     >
                         Choisissez vos plateformes et commencez à synchroniser vos données en local dès maintenant.
@@ -84,7 +84,7 @@ export function Download() {
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            transition={{ duration: 0.3, delay: index * 0.08 }}
                             className="w-full"
                         >
                             <Magnetic intensity={0.2} range={100} actionArea="self">
@@ -123,8 +123,8 @@ export function Download() {
             </div>
 
             {/* Decorative background elements */}
-            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-primary/10 rounded-full blur-[60px] pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
         </section>
     );
 }

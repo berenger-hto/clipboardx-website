@@ -1,20 +1,50 @@
 "use client"
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2 } from "lucide-react";
+import { toastManager } from "../toast";
+import { Spinner } from "../spinner";
+import { APIResponse } from "@/types/types";
 
 export function Waitlist() {
-    const [status, setStatus] = useState<"idle" | "success">("idle");
+    const [status, setStatus] = useState<"idle" | "success" | "loading">("idle");
     const [email, setEmail] = useState("");
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (email) {
-            setStatus("success");
-            setEmail("");
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        if (!email) {
+            toastManager.add({
+                title: "Oops !",
+                description: "Renseignez votre adresse mail",
+                type: "warning"
+            })
+            return
         }
-    };
+
+        setStatus("loading");
+        const res = await fetch("/api/waitlist", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+        });
+        const data = await res.json() as APIResponse;
+
+        if (data.status !== 200) {
+            toastManager.add({
+                title: "Oops !",
+                description: data.message,
+                type: "error"
+            })
+            setStatus("idle")
+            return
+        }
+        
+        setStatus("success");
+        setEmail("");
+    }
 
     return (
         <section className="py-24 px-6 relative bg-background/50 overflow-hidden" id="waitlist">
@@ -26,7 +56,7 @@ export function Waitlist() {
                     className="p-8 md:p-12 rounded-[2.5rem] bg-card/40 border border-primary/5 backdrop-blur-sm"
                 >
                     <AnimatePresence mode="wait">
-                        {status === "idle" ? (
+                        {status !== "success" ? (
                             <motion.div
                                 key="form"
                                 initial={{ opacity: 0, scale: 0.95 }}
@@ -49,14 +79,19 @@ export function Waitlist() {
                                         placeholder="Ton email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        required
                                         className="flex-1 px-6 py-4 rounded-full bg-card/80 border border-primary/10 focus:border-primary/30 outline-hidden transition-all text-sm"
+                                        required
                                     />
                                     <button
                                         type="submit"
                                         className="px-8 py-4 rounded-full bg-primary text-background font-bold hover:scale-105 active:scale-95 transition-all text-sm flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-primary/20"
+                                        disabled={status === "loading"}
                                     >
-                                        <Send size={16} />
+                                        {status === "loading" ? (
+                                            <Spinner />
+                                        ) : (
+                                            <Send size={16} />
+                                        )}
                                         S’inscrire
                                     </button>
                                 </form>

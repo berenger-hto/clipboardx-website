@@ -23,7 +23,7 @@ const STEPS = [
                             x: [0, 10, 0, -10, 0],
                             y: [-10, 0, 10, 0, -10]
                         }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                         className="absolute inset-0 flex items-center justify-center"
                     >
                         <div className="w-16 h-16 rounded-full border-4 border-zinc-400 bg-zinc-800/80 backdrop-blur-sm flex items-center justify-center relative translate-x-2 translate-y-2">
@@ -92,7 +92,7 @@ export function HowItWorks() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.3 }}
                         className="text-3xl sm:text-4xl md:text-5xl font-bold font-space mb-4"
                     >
                         Comment ça marche ?
@@ -107,7 +107,7 @@ export function HowItWorks() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.15 }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
                             className="flex flex-col rounded-[2.5rem] bg-card/40 border border-primary/5 backdrop-blur-sm overflow-hidden p-8 md:p-10 group hover:border-primary/20 transition-all duration-500"
                         >
                             {/* Illustration area */}

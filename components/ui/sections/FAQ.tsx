@@ -62,7 +62,7 @@ export function FAQ() {
                     >
                         FAQ
                     </motion.h2>
-                    <p className="text-primary/40 text-lg">Other questions?</p>
+                    <p className="text-primary/40 text-lg">Autres questions?</p>
                 </div>
 
                 <div className="space-y-4">
@@ -85,8 +85,13 @@ export function FAQ() {
                                         : "bg-card/40 border border-primary/5 hover:border-primary/10 hover:bg-card/60"
                                     }`}
                                 >
-                                    <div className={`mt-1 p-1 rounded-full border transition-colors duration-300 ${isOpen ? "bg-primary/10 border-primary/20" : "bg-primary/5 border-primary/10"}`}>
-                                        {isOpen ? <X size={14} className="text-primary" /> : <Plus size={14} className="text-primary/60" />}
+                                    <div className={`mt-1 p-1 rounded-full border transition-all duration-300 ${isOpen ? "bg-primary/10 border-primary/20" : "bg-primary/5 border-primary/10"}`}>
+                                        <motion.div
+                                            animate={{ rotate: isOpen ? 45 : 0 }}
+                                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                                        >
+                                            <Plus size={14} className={isOpen ? "text-primary" : "text-primary/60"} />
+                                        </motion.div>
                                     </div>
                                     <div className="flex-1">
                                         <h3 className={`text-lg font-bold transition-colors duration-300 ${isOpen ? "text-primary" : "text-primary/80"}`}>
@@ -99,7 +104,7 @@ export function FAQ() {
                                                     initial={{ height: 0, opacity: 0 }}
                                                     animate={{ height: "auto", opacity: 1 }}
                                                     exit={{ height: 0, opacity: 0 }}
-                                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                    transition={{ duration: 0.25, ease: "easeInOut" }}
                                                 >
                                                     <p className="text-primary/60 mt-4 leading-relaxed">
                                                         {item.answer}
@@ -116,7 +121,7 @@ export function FAQ() {
             </div>
 
             {/* Background elements */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
         </section>
     );
 }

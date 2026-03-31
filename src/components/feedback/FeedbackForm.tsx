@@ -74,8 +74,8 @@ export function FeedbackForm() {
             }
 
             toastManager.add({
-                title: "Nous vous remercions !",
-                description: res.message,
+                title: "Yes !",
+                description: "Nous vous remercions !",
                 type: "success"
             })
 

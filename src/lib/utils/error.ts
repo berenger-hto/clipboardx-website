@@ -1,5 +1,5 @@
 import { ZodError } from "zod";
-import { Prisma } from "@/generated/prisma/client";
+import { Prisma } from "@/generated/client";
 
 export function error(e: Error | ZodError | Prisma.PrismaClientKnownRequestError, prismaErrorMessage?: string) {
     return {

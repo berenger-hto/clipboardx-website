@@ -6,6 +6,7 @@ import { HowItWorks } from "@/components/ui/sections/HowItWorks";
 import { UseCases } from "@/components/ui/sections/UseCases";
 import { FAQ } from "@/components/ui/sections/FAQ";
 import { Download } from "@/components/ui/sections/Download";
+import { InstallationGuide } from "@/components/ui/sections/InstallationGuide";
 import { Waitlist } from "@/components/ui/sections/Waitlist";
 import { Feedback } from "@/components/ui/sections/Feedback";
 import { Footer } from "@/components/ui/sections/Footer";
@@ -21,6 +22,7 @@ export default function Home() {
       <UseCases />
       <FAQ />
       <Download />
+      <InstallationGuide />
       <Waitlist />
       <Feedback />
       <Footer />

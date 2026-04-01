@@ -1,6 +1,6 @@
-# 📋 ClipBoardX - Site Officiel
+# 📋 ClipboardX - Site Officiel
 
-Ce dépôt contient le code source de la **page produit (landing page)** de **ClipBoardX**, une application web et de bureau ultra-moderne conçue pour gérer votre presse-papier avec une sécurité maximale et une simplicité déconcertante.
+Ce dépôt contient le code source de la **page produit (landing page)** de **ClipboardX**, une application web et de bureau ultra-moderne conçue pour gérer votre presse-papier avec une sécurité maximale et une simplicité déconcertante.
 
 ## ✨ Fonctionnalités des apps
 
@@ -15,4 +15,4 @@ Ce dépôt contient le code source de la **page produit (landing page)** de **Cl
 Ce projet est sous licence MIT.
 
 ---
-*Fait avec ❤️ par l'équipe ClipBoardX.*
+*Fait avec ❤️ par l'équipe ClipboardX.*

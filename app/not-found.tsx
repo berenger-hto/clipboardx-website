@@ -31,16 +31,6 @@ export default function NotFound() {
             <Home size={20} />
             Retour à l'accueil
           </Button>
-          
-          <Button
-            variant="outline"
-            size="xl"
-            onClick={() => window.history.back()}
-            className="flex items-center gap-2 px-8 rounded-full"
-          >
-            <ArrowLeft size={20} />
-            Page précédente
-          </Button>
         </div>
       </div>
     </div>

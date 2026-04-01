@@ -12,7 +12,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "ClipBoardX",
+  title: "ClipboardX",
   description: "A ClipboardX website",
 };
 

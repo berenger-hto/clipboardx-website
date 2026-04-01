@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { AnimatedBackground } from "@/components/motion-primitives/animated-background";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import {
     Drawer,
     DrawerTrigger,
@@ -15,22 +16,29 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 const TABS = [
-    { label: "Accueil", href: "#home" },
-    { label: "Pourquoi", href: "#why" },
-    { label: "Fonctionnalités", href: "#features" },
-    // { label: "Comment ça marche", href: "#how-it-works" },
-    { label: "Télécharger", href: "#download" }
+    { label: "Accueil", href: "/#home" },
+    { label: "Pourquoi", href: "/#why" },
+    { label: "Fonctionnalités", href: "/#features" },
+    // { label: "Comment ça marche", href: "/#how-it-works" },
+    { label: "Télécharger", href: "/#download" }
 ]
 
 export function Navbar() {
     const { theme, setTheme } = useTheme()
     const [open, setOpen] = useState(false)
+    const pathname = usePathname();
+    const router = useRouter();
 
-    const scrollToSection = (e: React.MouseEvent, id: string) => {
+    const scrollToSection = (e: React.MouseEvent, href: string) => {
         e.preventDefault()
-        const element = document.getElementById(id.replace('#', ''))
-        if (element) {
-            element.scrollIntoView({ behavior: 'instant' })
+        if (pathname === '/') {
+            const id = href.replace('/#', '')
+            const element = document.getElementById(id)
+            if (element) {
+                element.scrollIntoView({ behavior: 'instant' })
+            }
+        } else {
+            router.push(href)
         }
     }
 
@@ -44,7 +52,7 @@ export function Navbar() {
             >
                 <Link href="/" className="flex items-center gap-2 cursor-pointer">
                     <RefreshCw size={20} className="text-black dark:text-white" />
-                    <span className="text-xl font-bold font-space tracking-tight">ClipBoardX</span>
+                    <span className="text-xl font-bold font-space tracking-tight">ClipboardX</span>
                 </Link>
 
                 {/* Desktop Navigation */}

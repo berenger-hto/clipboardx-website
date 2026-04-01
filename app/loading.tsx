@@ -46,7 +46,7 @@ export default function Loading() {
                     className="flex flex-col items-center gap-1"
                 >
                     <span className="text-xl font-bold font-space tracking-[0.2em] uppercase">
-                        ClipBoardX
+                        ClipboardX
                     </span>
                     <div className="w-12 h-0.5 bg-primary/20 rounded-full overflow-hidden">
                         <motion.div 

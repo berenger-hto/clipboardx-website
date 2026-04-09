@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Monitor, Apple, Terminal, Download as DownloadIcon } from "lucide-react";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
+import { toastManager } from "../toast";
 
 const DOWNLOADS = [
     {
@@ -24,7 +25,7 @@ const DOWNLOADS = [
         icon: <Terminal className="w-6 h-6" />,
         status: "available",
         href: "#",
-        description: "AppImage / deb"
+        description: ".deb installer"
     },
     {
         name: "iOS",
@@ -43,6 +44,21 @@ const DOWNLOADS = [
 ];
 
 export function Download() {
+    
+    const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>, index: number) => {
+        e.preventDefault()
+        if (DOWNLOADS[index].status === "available") {
+            window.open(DOWNLOADS[index].href, "_blank")
+        } else {
+            toastManager.add({
+                title: "Oops !",
+                description: "Cette version de l'application n'est pas encore disponible. Revenez plus tard.",
+                type: "info"
+            })
+        }
+        
+    }
+
     return (
         <section className="py-24 px-6 relative overflow-hidden bg-background" id="download">
             <div className="max-w-7xl mx-auto relative z-10">
@@ -89,7 +105,8 @@ export function Download() {
                         >
                             <Magnetic intensity={0.2} range={100} actionArea="self">
                                 <a
-                                    href={platform.href}
+                                    href="#"
+                                    onClick={(e) => handleDownload(e, index)}
                                     className={`group relative flex flex-col items-center gap-4 p-8 rounded-3xl border transition-all duration-300 ${
                                         platform.status === 'available'
                                             ? "bg-card/30 border-primary/10 hover:border-primary/30 backdrop-blur-xl"

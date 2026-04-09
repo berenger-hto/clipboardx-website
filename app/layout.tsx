@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AnchoredToastProvider, ToastProvider } from "@/components/ui/toast"
+import { CookieConsent } from "@/components/CookieConsent";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -37,6 +38,7 @@ export default function RootLayout({
           <ToastProvider position="bottom-right">
             <AnchoredToastProvider>
               {children}
+              <CookieConsent />
             </AnchoredToastProvider>
           </ToastProvider>
         </ThemeProvider>

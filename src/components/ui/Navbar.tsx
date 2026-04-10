@@ -23,7 +23,11 @@ const TABS = [
     { label: "Télécharger", href: "/#download" }
 ]
 
-export function Navbar() {
+type Props = {
+    showTabs?: boolean
+}
+
+export function Navbar({ showTabs = false }: Props) {
     const { theme, setTheme } = useTheme()
     const [open, setOpen] = useState(false)
     const pathname = usePathname();
@@ -56,7 +60,7 @@ export function Navbar() {
                 </Link>
 
                 {/* Desktop Navigation */}
-                <ul className="hidden md:flex gap-2 items-center justify-center bg-card/50 backdrop-blur-sm rounded-4xl px-4 py-2 border border-primary/10">
+                {showTabs && <ul className="hidden md:flex gap-2 items-center justify-center bg-card/50 backdrop-blur-sm rounded-4xl px-4 py-2 border border-primary/10">
                     <AnimatedBackground
                         defaultValue={TABS[0].label}
                         className='rounded-full bg-zinc-100 dark:bg-zinc-800'
@@ -77,7 +81,7 @@ export function Navbar() {
                             </button>
                         ))}
                     </AnimatedBackground>
-                </ul>
+                </ul>}
                 <div className="flex items-center gap-2">
                     <Button size="icon-lg" variant="ghost" className="hidden md:flex" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
                         <Moon className="hidden dark:block" />

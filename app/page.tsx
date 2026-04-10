@@ -14,7 +14,7 @@ import { Footer } from "@/components/ui/sections/Footer";
 export default function Home() {
   return (
     <main className="flex flex-col w-full">
-      <Navbar />
+      <Navbar showTabs={true} />
       <Hero />
       <WhyClipboardX />
       <Features />

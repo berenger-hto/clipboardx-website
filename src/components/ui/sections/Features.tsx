@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Shield, Zap, Lock, Globe, HardDrive, Smartphone } from "lucide-react";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
+import { Button } from "../button";
+import Link from "next/link";
 
 const FEATURES = [
     {
@@ -87,6 +89,11 @@ export function Features() {
                             </motion.div>
                         </Magnetic>
                     ))}
+                </div>
+                <div className="text-xl text-center mt-14">
+                    <Link href="/features">
+                        <Button variant="link" size="xl">Tout voir</Button>
+                    </Link>
                 </div>
             </div>
 

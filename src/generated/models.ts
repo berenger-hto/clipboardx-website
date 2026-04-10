@@ -10,4 +10,9 @@
  */
 export type * from './models/WaitlistUser'
 export type * from './models/Feedback'
+export type * from './models/User'
+export type * from './models/Account'
+export type * from './models/Session'
+export type * from './models/VerificationToken'
+export type * from './models/Admin'
 export type * from './commonInputTypes'

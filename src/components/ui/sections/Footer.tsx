@@ -41,7 +41,7 @@ export function Footer() {
                         <li><a href="/#features" onClick={(e) => handleScroll(e, '/#features')} className="hover:text-primary transition-colors">Fonctionnalités</a></li>
                         <li><a href="/#how-it-works" onClick={(e) => handleScroll(e, '/#how-it-works')} className="hover:text-primary transition-colors">Comment ça marche</a></li>
                         <li><a href="/#download" onClick={(e) => handleScroll(e, '/#download')} className="hover:text-primary transition-colors">Télécharger</a></li>
-                        <li><span className="text-primary/40 cursor-not-allowed">Nouveautés (Bientôt)</span></li>
+                        <li><Link href="/features"><span className="text-primary/40 hover:text-primary transition-colors">Nouveautés</span></Link> </li>
                     </ul>
                 </div>
 

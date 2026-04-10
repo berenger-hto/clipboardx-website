@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated"
@@ -12,17 +7,83 @@ datasource db {
   provider = "postgresql"
 }
 
-model WaitlistUser { 
-  id    Int     @id @default(autoincrement()) 
-  email String  @unique
+model WaitlistUser {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
   createdAt DateTime @default(now())
-} 
+}
 
 model Feedback {
-  id    Int     @id @default(autoincrement()) 
-  name String
-  email String
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String
   feedbackType String
-  message String
+  message      String
+  createdAt    DateTime @default(now())
+}
+
+// Auth.js Models
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  admin         Admin?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Table Admin
+model Admin {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  role      String   @default("ADMIN")
   createdAt DateTime @default(now())
 }

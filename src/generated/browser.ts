@@ -27,3 +27,28 @@ export type WaitlistUser = Prisma.WaitlistUserModel
  * 
  */
 export type Feedback = Prisma.FeedbackModel
+/**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
+/**
+ * Model Account
+ * 
+ */
+export type Account = Prisma.AccountModel
+/**
+ * Model Session
+ * 
+ */
+export type Session = Prisma.SessionModel
+/**
+ * Model VerificationToken
+ * 
+ */
+export type VerificationToken = Prisma.VerificationTokenModel
+/**
+ * Model Admin
+ * 
+ */
+export type Admin = Prisma.AdminModel

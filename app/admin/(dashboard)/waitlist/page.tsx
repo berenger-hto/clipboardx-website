@@ -5,8 +5,6 @@ export default async function AdminWaitlistPage() {
     const data = await fetch(`${process.env.HOSTNAME}/api/waitlist`)
     const res = await data.json() as APIResponse & { data: WaitlistData[] }
 
-    console.log(res)
-
     return (
         <div className="p-6 space-y-8 max-w-7xl mx-auto">
             <div className="flex flex-col gap-2">

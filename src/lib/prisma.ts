@@ -11,11 +11,11 @@ const globalForPrisma = globalThis as unknown as {
     adapter: PrismaPg | undefined;
 }
 
-const connectionString = `${process.env.LOCAL_DATABASE_URL}`;
+const connectionString = `${process.env.DIRECT_URL}`;
 
 function getPool() {
     if (!globalForPrisma.pool) {
-        globalForPrisma.pool = new Pool({ connectionString });
+        globalForPrisma.pool = new Pool({ connectionString, ssl: { rejectUnauthorized: false } });
     }
     return globalForPrisma.pool;
 }

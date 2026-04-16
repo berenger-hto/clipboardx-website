@@ -9,5 +9,5 @@ export async function POST(request: Request) {
 
 export async function GET() {
     const data = await Waitlist.getAll()
-    return NextResponse.json({ data }, { status: data.status })
+    return NextResponse.json(data, { status: data.status })
 }

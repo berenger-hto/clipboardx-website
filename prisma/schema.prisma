@@ -87,3 +87,12 @@ model Admin {
   role      String   @default("ADMIN")
   createdAt DateTime @default(now())
 }
+
+model Feature {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  imageSrc    String
+  type        String
+  createdAt   DateTime @default(now())
+}

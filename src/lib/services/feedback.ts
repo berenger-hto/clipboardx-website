@@ -11,7 +11,22 @@ export class Feedback {
             const insert = await prisma.feedback.create({
                 data: validateData
             })
-            return { message: insert ? "Success" : "Error", status: insert ? 200 : 500 }
+            return { message: insert ? "Success" : "Error", status: insert ? 201 : 500 }
+        } catch (e) {
+            const err = error(e as Error | ZodError)
+            console.error(err)
+            return err
+        }
+    }
+
+    static async getAll() {
+        try {
+            const feedbacks = await prisma.feedback.findMany({
+                orderBy: {
+                    createdAt: "desc"
+                }
+            })
+            return { data: feedbacks, status: 200 }
         } catch (e) {
             const err = error(e as Error | ZodError)
             console.error(err)

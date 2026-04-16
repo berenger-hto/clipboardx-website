@@ -1,6 +1,5 @@
 "use client"
 
-import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { FeatureCard } from "./FeatureCard"
 import { useState } from "react";
@@ -10,7 +9,7 @@ type Props = {
         title: string;
         description: string;
         imageSrc: string;
-        filter: string;
+        type: string;
     }[]
 }
 
@@ -34,7 +33,7 @@ export function FeaturesComp({ data }: Props) {
 
     const filteredData = activeFilter === "all"
         ? data
-        : data.filter(item => item.filter === activeFilter)
+        : data.filter(item => item.type === activeFilter)
 
     return (
         <main className="flex-1 py-32 px-6 mt-14">
@@ -60,6 +59,7 @@ export function FeaturesComp({ data }: Props) {
                 </div>
 
                 <div className="space-y-12 md:space-y-24">
+                    {!filteredData.length && <p className="text-center font-bold font-mono text-xl">Aucune feature pour {FILTER_BUTTONS.find(btn => btn.value === activeFilter)?.label}</p>}
                     {filteredData.map((feature, index) => (
                         <FeatureCard
                             key={index}

@@ -7,3 +7,8 @@ export async function POST(request: Request) {
     const result = await Feedback.add({ name, email, feedbackType, message })
     return NextResponse.json(result, { status: result.status })
 }
+
+export async function GET() {
+    const data = await Feedback.getAll()
+    return NextResponse.json(data, { status: data.status })
+}

@@ -42,7 +42,7 @@ export function FeedbackForm() {
         const formData = new FormData(e.target as HTMLFormElement);
         const data = Object.fromEntries(formData) as Object
 
-        if ((Object.values(data) as string[]).some(value => value.length === 0)) {
+        if ((Object.values(data) as string[]).some(value => value.trim().length === 0)) {
             toastManager.add({
                 title: "Oops !",
                 description: "Veuillez remplir tous les champs",
@@ -64,7 +64,7 @@ export function FeedbackForm() {
 
             const res = await response.json() as APIResponse
 
-            if (res.status !== 200) {
+            if (res.status !== 201) {
                 toastManager.add({
                     title: "Oops !",
                     description: res.message,
@@ -105,11 +105,11 @@ export function FeedbackForm() {
                 <Form onSubmit={handleSubmit} ref={formRef}>
                     <Field>
                         <FieldLabel>Nom</FieldLabel>
-                        <Input placeholder="Ton nom" type="text" name="name" />
+                        <Input placeholder="Ton nom" type="text" name="name" size="lg" />
                     </Field>
                     <Field>
                         <FieldLabel>Email</FieldLabel>
-                        <Input placeholder="Ton email" type="email" name="email" />
+                        <Input placeholder="Ton email" type="email" name="email" size="lg" />
                     </Field>
                     <Field>
                         <FieldLabel>Type de feedback</FieldLabel>
@@ -117,8 +117,9 @@ export function FeedbackForm() {
                             defaultValue="suggestion"
                             items={feedbackOptions}
                             name="feedbackType"
+                            
                         >
-                            <SelectTrigger>
+                            <SelectTrigger size="lg">
                                 <SelectValue />
                             </SelectTrigger>
                             <SelectPopup>
@@ -134,7 +135,7 @@ export function FeedbackForm() {
                         <FieldLabel>Message</FieldLabel>
                         <Textarea placeholder="Ton message..." rows={4} name="message" />
                     </Field>
-                    <Button className="w-full" type="submit" disabled={isLoading}>
+                    <Button className="w-full" type="submit" disabled={isLoading} size="lg">
                         {isLoading ? 
                             <>
                                 <Spinner /> En cours 

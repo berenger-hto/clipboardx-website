@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { ThemeSwitcher } from "./theme-switcher";
 
 const TABS = [
     { label: "Accueil", href: "/#home" },
@@ -111,15 +112,7 @@ export function Navbar({ showTabs = false }: Props) {
                                 </nav>
 
                                 <div className="mt-4">
-                                    <Button
-                                        variant="ghost"
-                                        size="lg"
-                                        className="rounded-full px-8 text-lg font-medium"
-                                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                                    >
-                                        {theme === "dark" ? <Sun className="mr-3" size={24} /> : <Moon className="mr-3" size={24} />}
-                                        {theme === "dark" ? "Oeil de jour" : "Oeil de nuit"}
-                                    </Button>
+                                    <ThemeSwitcher />
                                 </div>
                             </div>
                         </DrawerPopup>

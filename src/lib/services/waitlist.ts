@@ -10,7 +10,18 @@ export class Waitlist {
             const insert = await prisma.waitlistUser.create({
                 data
             })
-            return { message: insert ? "Success" : "Error", status: insert ? 200 : 500 }
+            return { message: insert ? "Success" : "Error", status: insert ? 201 : 500 }
+        } catch (e) {
+            const err = error(e as Error | ZodError, "Vous êtes déjà inscrit")
+            console.error(err)
+            return err
+        }
+    }
+
+    static async getAll() {
+        try {
+            const users = await prisma.waitlistUser.findMany()
+            return { data: users, status: 200 }
         } catch (e) {
             const err = error(e as Error | ZodError, "Vous êtes déjà inscrit")
             console.error(err)

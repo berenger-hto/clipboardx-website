@@ -32,7 +32,7 @@ export function Waitlist() {
         });
         const data = await res.json() as APIResponse;
 
-        if (data.status !== 200) {
+        if (data.status !== 201) {
             toastManager.add({
                 title: "Oops !",
                 description: data.message,

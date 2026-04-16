@@ -76,3 +76,8 @@ export type VerificationToken = Prisma.VerificationTokenModel
  * 
  */
 export type Admin = Prisma.AdminModel
+/**
+ * Model Feature
+ * 
+ */
+export type Feature = Prisma.FeatureModel

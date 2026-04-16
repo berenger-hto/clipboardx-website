@@ -1,15 +1,23 @@
 import { signIn } from "@/auth"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Navbar } from "@/components/ui/Navbar"
-import { Footer } from "@/components/ui/sections/Footer"
 import { IconBrandGithub } from "@tabler/icons-react"
+import { auth } from "@/auth"
+import { redirect } from "next/navigation"
 
-export default function AdminLoginPage() {
+export default async function AdminLoginPage() {
+    const session = await auth()
+    console.log(session)
+
+    if (session?.user?.email && process.env.AUTHORIZE_MAIL) {
+        const isAuthorized = session.user.email.toLowerCase().trim() === process.env.AUTHORIZE_MAIL.toLowerCase().trim()
+        if (isAuthorized) {
+            redirect("/admin")
+        }
+    }
+
     return (
-        <div className="min-h-screen bg-background flex flex-col">
-            <Navbar />
-            
+        <div className="min-h-screen w-full bg-background flex flex-col">            
             <main className="flex-1 flex items-center justify-center p-6 bg-linear-to-b from-background to-primary/5">
                 <Card className="w-full max-w-md shadow-2xl border-primary/10">
                     <CardHeader className="text-center">
@@ -54,8 +62,6 @@ export default function AdminLoginPage() {
                     </CardContent>
                 </Card>
             </main>
-
-            <Footer />
         </div>
     )
 }

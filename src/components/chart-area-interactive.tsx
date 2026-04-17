@@ -142,7 +142,7 @@ const chartConfig = {
 
 export function ChartAreaInteractive() {
   const isMobile = useIsMobile()
-  const [timeRange, setTimeRange] = React.useState("90d")
+  const [timeRange, setTimeRange] = React.useState<string | null>("90d")
 
   React.useEffect(() => {
     if (isMobile) {
@@ -177,7 +177,7 @@ export function ChartAreaInteractive() {
         <CardAction>
           <ToggleGroup
             type="single"
-            value={timeRange}
+            value={timeRange ?? ""}
             onValueChange={setTimeRange}
             variant="outline"
             className="hidden *:data-[slot=toggle-group-item]:px-4! @[767px]/card:flex"

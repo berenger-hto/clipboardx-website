@@ -1,9 +1,11 @@
 import { WaitlistCard } from "./WaitlistCard"
 import type { APIResponse, WaitlistData } from "@/types/types"
+import { Waitlist } from "@/lib/services/waitlist"
+
+export const dynamic = "force-dynamic"
 
 export default async function AdminWaitlistPage() {
-    const data = await fetch(`${process.env.HOSTNAME}/api/waitlist`)
-    const res = await data.json() as APIResponse & { data: WaitlistData[] }
+    const res = await Waitlist.getAll() as APIResponse & { data: WaitlistData[] }
 
     return (
         <div className="p-6 space-y-8 max-w-7xl mx-auto">

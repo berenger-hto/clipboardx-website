@@ -1,9 +1,11 @@
 import { FeedbackCard } from "./FeedbackCard"
 import type { APIResponse, FeedbackData } from "@/types/types"
+import { Feedback } from "@/lib/services/feedback"
+
+export const dynamic = "force-dynamic"
 
 export default async function AdminFeedbackPage() {
-    const data = await fetch(`${process.env.HOSTNAME}/api/feedback`)
-    const res = await data.json() as APIResponse & { data: FeedbackData[] }
+    const res = await Feedback.getAll() as APIResponse & { data: FeedbackData[] }
 
     return <div className="p-6 space-y-8 max-w-7xl mx-auto">
         <div className="flex flex-col gap-2">

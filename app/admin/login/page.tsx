@@ -7,7 +7,6 @@ import { redirect } from "next/navigation"
 
 export default async function AdminLoginPage() {
     const session = await auth()
-    console.log(session)
 
     if (session?.user?.email && process.env.AUTHORIZE_MAIL) {
         const isAuthorized = session.user.email.toLowerCase().trim() === process.env.AUTHORIZE_MAIL.toLowerCase().trim()

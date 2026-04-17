@@ -13,7 +13,6 @@ export class Waitlist {
             return { message: insert ? "Success" : "Error", status: insert ? 201 : 500 }
         } catch (e) {
             const err = error(e as Error | ZodError, "Vous êtes déjà inscrit")
-            console.error(err)
             return err
         }
     }
@@ -23,8 +22,7 @@ export class Waitlist {
             const users = await prisma.waitlistUser.findMany()
             return { data: users, status: 200 }
         } catch (e) {
-            const err = error(e as Error | ZodError, "Vous êtes déjà inscrit")
-            console.error(err)
+            const err = error(e as Error)
             return err
         }
     }

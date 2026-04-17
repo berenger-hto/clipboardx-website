@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from "next/server"
 export async function POST(request: NextRequest) {
     const body = await request.json()
     const result = await Feature.add(body)
-    console.log(body)
     return NextResponse.json(result, { status: result.status })
 }
 

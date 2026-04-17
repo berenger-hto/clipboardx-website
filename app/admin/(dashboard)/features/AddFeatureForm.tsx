@@ -104,8 +104,6 @@ export function AddFeatureForm() {
             const { error, data } = await uploadFile(imageSrc, files[0].file as File)
             
             if (error) {
-                console.error(error)
-                console.log(data)
                 toastManager.add({
                     title: "Oops !",
                     description: "L'image n'a pas pu être uploadée",
@@ -143,7 +141,6 @@ export function AddFeatureForm() {
             router.refresh()
             queryClient.invalidateQueries({ queryKey: ["features"] })
         } catch (error) {
-            console.error("Submission error:", error)
             toastManager.add({
                 title: "Oops !",
                 description: "Une erreur est survenue",

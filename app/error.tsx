@@ -13,13 +13,11 @@ export default function Error({
   reset: () => void
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error)
   }, [error])
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center p-6 bg-background text-foreground overflow-hidden">
-      {/* Decorative background element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
 
       <motion.div

@@ -17,7 +17,6 @@ export class Feature {
             return { message: save ? "Success" : "Error", status: save ? 201 : 500 }
         } catch (e) {
             const err = error(e as Error | ZodError, "Erreur lors de l'ajout de la fonctionnalité")
-            console.error(err)
             return err
         }
     }
@@ -32,7 +31,6 @@ export class Feature {
             return { status: 200, data: features }
         } catch (e) {
             const err = error(e as Error)
-            console.error(err)
             return err
         }
     }

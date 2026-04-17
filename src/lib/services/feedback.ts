@@ -14,7 +14,6 @@ export class Feedback {
             return { message: insert ? "Success" : "Error", status: insert ? 201 : 500 }
         } catch (e) {
             const err = error(e as Error | ZodError)
-            console.error(err)
             return err
         }
     }
@@ -29,7 +28,6 @@ export class Feedback {
             return { data: feedbacks, status: 200 }
         } catch (e) {
             const err = error(e as Error | ZodError)
-            console.error(err)
             return err
         }
     }

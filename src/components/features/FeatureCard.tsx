@@ -21,9 +21,8 @@ export function FeatureCard({
     className
 }: FeatureCardProps) {
     const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!)
-    const { data } = supabase.storage.from('features').getPublicUrl('original-e6754e319cde71d1495dde8e4f1a7555-1776371717874.png')
+    const { data } = supabase.storage.from('features').getPublicUrl(imageSrc)
 
-    console.log(data)
     return <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

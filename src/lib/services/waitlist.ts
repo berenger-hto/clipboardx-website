@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma"
 import { ZodError } from "zod"
 import { waitlistUserSchema } from "../validators/waitlist"
 import { error } from "../utils/error"
+import { authorize } from "../utils/authorize"
 
 export class Waitlist {
     static async add(email: string) {
@@ -19,6 +20,10 @@ export class Waitlist {
 
     static async getAll() {
         try {
+            const { isAuthorized } = await authorize()
+            if (!isAuthorized) {
+                return { message: "Unauthorized", status: 401 }
+            }
             const users = await prisma.waitlistUser.findMany()
             return { data: users, status: 200 }
         } catch (e) {

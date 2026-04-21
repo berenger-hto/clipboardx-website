@@ -3,14 +3,14 @@ import { featureSchema } from "../validators/feature"
 import { error } from "../utils/error"
 import { ZodError } from "zod"
 import { prisma } from "../prisma"
-import { auth } from "@/auth"
+import { authorize } from "../utils/authorize"
 
 export class Feature {
     static async add(featureData: FeatureData) {
-        const session = await auth()
         try {
-            if (!session || session.user?.email !== process.env.AUTHORIZE_MAIL) {
-                return { message: "Unauthorized", status: 401 }
+            const { isAuthorized } = await authorize()
+            if (!isAuthorized) {
+                return { status: 401, message: "Unauthorized" }
             }
             const data = featureSchema.parse(featureData)
             const save = await prisma.feature.create({ data })

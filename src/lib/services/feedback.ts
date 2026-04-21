@@ -3,6 +3,7 @@ import { feedbackValidator } from "../validators/feedback";
 import { error } from "../utils/error";
 import { ZodError } from "zod";
 import { prisma } from "../prisma";
+import { authorize } from "../utils/authorize";
 
 export class Feedback {
     static async add(data: FeedbackData) {
@@ -20,6 +21,10 @@ export class Feedback {
 
     static async getAll() {
         try {
+            const { isAuthorized } = await authorize()
+            if (!isAuthorized) {
+                return { message: "Unauthorized", status: 401 }
+            }
             const feedbacks = await prisma.feedback.findMany({
                 orderBy: {
                     createdAt: "desc"
